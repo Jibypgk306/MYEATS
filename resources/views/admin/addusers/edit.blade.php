@@ -1,7 +1,7 @@
 <x-admin-master>
     @section('content')
 
-        <h1>Edit </h1>
+        <h2>Update user : {{$adduser->firstname}}&nbsp;{{$adduser->lastname}}</h2>
 
         <form method="post" action="{{route('adduser.update', $adduser->id)}}" enctype="multipart/form-data">
             @csrf
@@ -10,13 +10,14 @@
                 <label for="firstname">First name</label>
                 <input type="text"
                        name="firstname"
-                       class="form-control"
+                       class="form-control @error('firstname') is-invalid @enderror"
                        id="firstname"
                        aria-describedby=""
                        placeholder="Enter firstname"
-                       value="{{$adduser->firstname}}"
-
-                >
+                       value="{{$adduser->firstname}}">
+                       @error('firstname')
+    <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
             </div>
             <div class="form-group">
                 <label for="lastname">Last name</label>
@@ -67,10 +68,21 @@
 
                 >
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label for="block_user">Block User</label>
+               
+                       <select name="block_user"
+                       class="form-control"
+                       id="block_user"
+                       aria-describedby="">
+                       <option value="" disabled>Choose an Option</option>
+                       <option value="{{$adduser->block_user}}">Active</option>
+                       <option value="blocked">Blocked</option>
+                        </select>
+            </div>
+            <a  class="btn " href="{{route('adduser.index')}}" role="button"><b>Cancel</a>
+
+            <button type="submit" class="btn btn-primary"><b>Update User<b></button>
         </form>
-
-
-
     @endsection
 </x-admin-master>

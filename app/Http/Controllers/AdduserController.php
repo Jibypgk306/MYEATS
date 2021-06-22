@@ -8,13 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class AdduserController extends Controller
 {
-    public function index(){
-        return view('admin.addusers.index', [
-            'addusers' => DB::table('addusers')->paginate(5)
-            
-        ]);
-}
+    public function index(Request $request)
+    {    
+        $addusers = Adduser::when(
+            $request->input('firstname'),
+            function ($query) use ($request) {
+                $query->where('firstname', 'like', '%'.$request->input('firstname').'%');
+    }
+        ) ->orderBy('created_at', 'desc')->paginate(5);
 
+        $request->flash();
+
+        return view('admin.addusers.index',compact('addusers'));
+}
     public function create()
     {
 
@@ -24,7 +30,6 @@ class AdduserController extends Controller
         
     }
     
-
     public function store()
     {
         
@@ -66,38 +71,17 @@ class AdduserController extends Controller
        
         return view('admin.addusers.show', ['adduser'=> $adduser]);
     }
-    public function destroy(Adduser $adduser ,Request $request){
-
-
-
-        $adduser->delete();
-
-        $request->session()->flash('message', 'User was deleted');
-
-        return back();
-    }
-
-
-    public function update(Adduser $adduser){
-
-        
+    
+    public function update(Adduser $adduser)
+    {    
         $adduser->firstname = request('firstname');
         $adduser->lastname = request('lastname');
         $adduser->email=request('email');
         $adduser->mobile = request('mobile');
         $adduser->password = request('password');
-
-
-
-
         $adduser->save();
-
         session()->flash('user-updated-message', 'User was updated ');
-
-
         return redirect()->route('adduser.index');
 
     }
-
-
 }

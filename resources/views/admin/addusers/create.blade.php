@@ -71,9 +71,10 @@
 @enderror       
                         </div>
                         <a  class="btn " href="{{route('adduser.index')}}" role="button"><b>Cancel</a>
+                        <button type="submit" class="btn btn-primary">Create User</b></button>
+
                         <button  class="btn btn-primary">Create and add another</button>
 
-                        <button type="submit" class="btn btn-primary">Create User</b></button>
                 </form>
 
 

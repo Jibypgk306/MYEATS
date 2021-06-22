@@ -11,15 +11,12 @@
             <div class="alert alert-success">{{session('user-updated-message')}}</div>
         @endif
 <div>
-<button type="submit" class="btn btn-info text-right ">
-<a href="{{route('adduser.create')}}">
-CREATE</a></button>
+<button type="submit" class="btn btn-info">
+<a href="{{route('adduser.create')}}" >
+Create User</a></button>
 
 </div>
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div>
             
             <div class="card-body">
                 <div class="table-responsive">
@@ -60,7 +57,7 @@ CREATE</a></button>
         
         <div class="d-flex">
             <div class="mx-auto">
-            {{$addusers->links()}}
+            {{$addusers->links('pagination::bootstrap-4')}}
             </div>
         </div>
 
