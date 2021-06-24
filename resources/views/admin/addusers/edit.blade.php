@@ -23,38 +23,41 @@
                 <label for="lastname">Last name</label>
                 <input type="text"
                        name="lastname"
-                       class="form-control"
+                       class="form-control @error('lastname') is-invalid @enderror"
                        id="lastname"
                        aria-describedby=""
                        placeholder="Enter lastname"
-                       value="{{$adduser->lastname}}"
-
-                >
+                       value="{{$adduser->lastname}}">
+                       @error('lastname')
+    <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text"
                        name="email"
-                       class="form-control"
+                       class="form-control @error('email') is-invalid @enderror"
                        id="email"
                        aria-describedby=""
                        placeholder="Enter email"
-                       value="{{$adduser->email}}"
-
-                >
+                       value="{{$adduser->email}}">
+                       @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
             </div>
 
             <div class="form-group">
                 <label for="mobile">Mobile</label>
                 <input type="text"
                        name="mobile"
-                       class="form-control"
+                       class="form-control @error('mobile') is-invalid @enderror"
                        id="mobile"
                        aria-describedby=""
                        placeholder="Enter mobile number"
-                       value="{{$adduser->mobile}}"
-
-                >
+                       value="{{$adduser->mobile}}">
+                       @error('mobile')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -63,22 +66,19 @@
                        class="form-control"
                        id="password"
                        aria-describedby=""
-                       placeholder="Enter password"
                        value="{{$adduser->password}}"
-
-                >
+                       placeholder="Enter password">
             </div>
             <div class="form-group">
                 <label for="block_user">Block User</label>
                
-                       <select name="block_user"
-                       class="form-control"
-                       id="block_user"
-                       aria-describedby="">
-                       <option value="" disabled>Choose an Option</option>
-                       <option value="{{$adduser->block_user}}">Active</option>
-                       <option value="blocked">Blocked</option>
-                        </select>
+                       
+<select name="block_user" class="form-control" id="block_user" aria-describedby="">
+<option value="" disabled>Choose an Option</option>
+<option {{ old('block_user',$adduser->block_user) == 'active'? 'selected':'' }} value="active">Active</option>
+<option {{ old('block_user',$adduser->block_user) == 'blocked'? 'selected':'' }} value="blocked">Blocked</option>
+
+                                        </select>
             </div>
             <a  class="btn " href="{{route('adduser.index')}}" role="button"><b>Cancel</a>
 

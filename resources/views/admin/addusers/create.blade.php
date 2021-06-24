@@ -7,7 +7,7 @@
 
                         @csrf
                         <div class="form-group">
-                            <label for="firstname">First Nmae</label>
+                            <label for="firstname">First Name</label>
                                 <input type="text"
                                        name="firstname"
                                        class="form-control
@@ -20,7 +20,7 @@
 @enderror
                         </div>
                         <div class="form-group">
-                            <label for="lastname">Last Nmae</label>
+                            <label for="lastname">Last Namee</label>
                                 <input type="text"
                                        name="lastname"
                                        class="form-control @error('lastname') is-invalid @enderror"

@@ -1,7 +1,15 @@
 <x-admin-master>
-    @section('content')
 
-        <h1>Users</h1>
+    @section('content')
+    <h2>Users</h2><br>
+
+    <form>
+    <input type="text"   name="firstname" value="{{ old('firstname') }}">
+    <span class="input-group-btn">
+    <button class="btn btn-secondary" type="submit">Search</button>
+    </span>
+    </form><br>
+
 
         @if(session('message'))
             <div class="alert alert-danger">{{session('message')}}</div>
@@ -11,7 +19,7 @@
             <div class="alert alert-success">{{session('user-updated-message')}}</div>
         @endif
 <div>
-<button type="submit" class="btn btn-info">
+<button type="submit" class="btn btn-success">
 <a href="{{route('adduser.create')}}" >
 Create User</a></button>
 
@@ -70,6 +78,27 @@ Create User</a></button>
             <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
             <!-- Page level custom scripts -->
+
+    /**
+    *  __Construct method
+    */
+    public function __construct()
+    {
+    }
+
+    /**
+    *  __Construct method
+    */
+    public function __construct()
+    {
+    }
+
+    /**
+    *  __Construct method
+    */
+    public function __construct()
+    {
+    }
 {{--            <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
     @endsection
 

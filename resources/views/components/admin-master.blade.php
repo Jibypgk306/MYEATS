@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -93,13 +92,34 @@
             </a>
             
         </li>
-
-        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Admin Users</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Customers</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Drivers</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Restaurent Users</span></a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('adduser.index')}}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Users</span></a>
         </li>
+
+        <!-- Nav Item - Charts -->
+        
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
@@ -124,7 +144,17 @@
 
         <!-- Main Content -->
         <div id="content">
-
+<!-- Search Widget -->
+<div class="card my-4">
+                <div class="card-body">
+                    <div class="input-group">
+<input type="text" class="form-control" placeholder="Search for..." name="fname" value="{{ old('fname') }}">
+                        <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Go!</button>
+              </span>
+                    </div>
+                </div>
+            </div>
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -134,13 +164,7 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form>
-                        <input type="text"  name="firstname" 
-                            value="{{ old('firstname') }}">
-
-    <button type="submit">Search</button>
-</form>
-
+                
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -295,7 +319,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
+                    <span>Copyright &copy; Fooday_Jiby 2021</span>
                 </div>
             </div>
         </footer>
