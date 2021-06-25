@@ -70,19 +70,17 @@
                        placeholder="Enter password">
             </div>
             <div class="form-group">
-                <label for="block_user">Block User</label>
+            <label for="block_user">Block User</label>
                
                        
 <select name="block_user" class="form-control" id="block_user" aria-describedby="">
 <option value="" disabled>Choose an Option</option>
 <option {{ old('block_user',$adduser->block_user) == 'active'? 'selected':'' }} value="active">Active</option>
 <option {{ old('block_user',$adduser->block_user) == 'blocked'? 'selected':'' }} value="blocked">Blocked</option>
-
-                                        </select>
-            </div>
-            <a  class="btn " href="{{route('adduser.index')}}" role="button"><b>Cancel</a>
-
-            <button type="submit" class="btn btn-primary"><b>Update User<b></button>
-        </form>
-    @endsection
+</select>
+</div>
+<a class="btn " href="{{route('adduser.index')}}" role="button"><b>Cancel</a>
+<button type="submit" class="btn btn-primary"><b>Update User<b></button>
+</form>
+@endsection
 </x-admin-master>

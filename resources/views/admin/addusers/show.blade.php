@@ -1,7 +1,7 @@
 <x-admin-master>
     @section('content')
 
-        <h1>User Details:{{$adduser->firstname}} </h1>
+        <h2>User Details:{{$adduser->firstname}} </h2>
 
         <form method="post" action="{{route('adduser.show', $adduser->id)}}" enctype="multipart/form-data">
             @csrf

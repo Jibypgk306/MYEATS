@@ -93,14 +93,14 @@
             
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('addcitie.index')}}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Admin Users</span></a>
+                <span>Cities</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('addcuisine.index')}}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Customers</span></a>
+                <span>Cuisines</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">
