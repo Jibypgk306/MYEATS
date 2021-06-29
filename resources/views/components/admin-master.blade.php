@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FOODAY</title>
+    <title>FOODDAY</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -103,9 +103,14 @@
                 <span>Cuisines</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('addzone.index')}}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Drivers</span></a>
+                <span>Zones</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('addrestaurent.index')}}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Restaurents</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">

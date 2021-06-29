@@ -1,9 +1,9 @@
 <x-admin-master>
     @section('content')
 
-        <h1>Create City:</h1>
+        <h1>Create Zone:</h1>
 
-                <form method="post" action="{{route('addcitie.store')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('addzone.store')}}" enctype="multipart/form-data">
 
                         @csrf
                         <div class="form-group">
@@ -21,8 +21,8 @@
                         </div>
                         
                       
-                        <a  class="btn " href="{{route('addcitie.index')}}" role="button"><b>Cancel</a>
-                        <button type="submit" class="btn btn-primary">Create City</b></button>
+                        <a  class="btn " href="{{route('addzone.index')}}" role="button"><b>Cancel</a>
+                        <button type="submit" class="btn btn-primary">Create Zone</b></button>
 
                         <button  class="btn btn-primary">Create and add another</button>
 

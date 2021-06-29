@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Addcitie;
+use App\Models\Addrestaurent;
 use Illuminate\Http\Request;
 
 class AddcitieController extends Controller
