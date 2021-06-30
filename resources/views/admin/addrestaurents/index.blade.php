@@ -31,10 +31,9 @@ Create Restaurent</a></button>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                        <th></th>
                             <th>Name</th>
                             <th>City</th>
-                            <th>Logo</th>
+                             <th>Logo</th>
                             <th>Banner</th>
                             <th>Minimum order value</th>
                             <th>Cost for two people</th>
@@ -52,13 +51,14 @@ Create Restaurent</a></button>
                         @foreach($addrestaurents as $addrestaurent)
 
                             <tr>
-                                <td><img src="{{ asset('images/logo.jpg') }}" alt="tag" width="25" height="25"></td>
                                 <td>{{$addrestaurent->name}}</td>
-                                <td>{{$addrestaurent->citie}}</td>
-                                <td><img width="100px" src="{{$addrestaurent->logo}}" alt=""></td>                                <td>{{$addrestaurent->name}}</td>
-                                <td><img width="100px" src="{{$addrestaurent->banner}}" alt=""></td>                                <td>{{$addrestaurent->name}}</td>
+                                <td>{{$addrestaurent->addcity->name}}</td>
+                                                   
+                                <td><img src="{{Storage::url($addrestaurent->logo) }}" width="75" height="75" alt="image" /></td>
+                                <td><img src="{{Storage::url($addrestaurent->banner) }}" width="75" height="75" alt="image" /></td>
 
                                 <td>{{$addrestaurent->minvalue}}</td>
+                                <td>{{$addrestaurent->cost}}</td>
 
                                 <td>{{$addrestaurent->time}}</td>
                                 <td>{{$addrestaurent->is_open}}</td>
@@ -66,8 +66,8 @@ Create Restaurent</a></button>
                                 <td>{{$addrestaurent->open}}</td>
                                 <td>{{$addrestaurent->status}}</td>
 
-                                <td><a href="">EDIT</a></td>
-                                <td><a href="">VIEW</a></td>
+                                <td><a href="{{route('addrestaurent.edit', $addrestaurent->id)}}">EDIT</a></td>
+                                <td><a href="{{route('addrestaurent.show', $addrestaurent->id)}}">VIEW</a></td>
                             </tr>
                          @endforeach
 
@@ -93,27 +93,7 @@ Create Restaurent</a></button>
 
             <!-- Page level custom scripts -->
 
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-{{--            <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
+           <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
     @endsection
 
 </x-admin-master>

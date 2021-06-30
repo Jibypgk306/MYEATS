@@ -44,9 +44,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Adduser::class);
     }
-    public function addcitie()
+    public function addcity()
     {
-        return $this->belongsTo(Addcitie::class);
+        return $this->belongsTo(Addcity::class);
     }
     public function addcuisine()
     {

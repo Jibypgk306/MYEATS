@@ -13,13 +13,13 @@ class Addrestaurent extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function addcitie()
+    public function addcity()
     {
-        return $this->belongsTo(Addcitie::class);
+        return $this->belongsTo(Addcity::class);
     }
     public function addcuisine()
     {
-        return $this->belongsTo(Addcitie::class);
+        return $this->belongsTo(Addcuisine::class);
     }
     public function addzone()
     {

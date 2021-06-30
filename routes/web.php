@@ -9,6 +9,8 @@ Auth::routes();
     
     Route::middleware('auth')->group(function()
     {
+        Route::get('/home', 'App\Http\Controllers\AdminsController@index')->name('admin.index');
+
     Route::get('/admin', 'App\Http\Controllers\AdminsController@index')->name('admin.index');
 
     Route::get('/admin/addusers', 'App\Http\Controllers\AdduserController@index')->name('adduser.index');
@@ -54,6 +56,10 @@ Auth::routes();
     Route::get('/admin/addrestaurents', 'App\Http\Controllers\AddrestaurentController@index')->name('addrestaurent.index');
     Route::get('/admin/addrestaurents/create', 'App\Http\Controllers\AddrestaurentController@create')->name('addrestaurent.create');
     Route::post('/admin/addrestaurents', 'App\Http\Controllers\AddrestaurentController@store')->name('addrestaurent.store');
+    Route::patch('/admin/addrestaurents/{addrestaurent}/update', 'App\Http\Controllers\AddrestaurentController@update')->name('addrestaurent.update');
+    Route::get('/admin/addrestaurents/{addrestaurent}/edit', 'App\Http\Controllers\AddrestaurentController@edit')->name('addrestaurent.edit');
+    Route::get('/admin/addrestaurents/{addrestaurent}/show', 'App\Http\Controllers\AddrestaurentController@show')->name('addrestaurent.show');
+
 }); 
 
 

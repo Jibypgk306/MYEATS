@@ -23,7 +23,7 @@ class AddcuisineController extends Controller
 public function create()
 {
 
-    Addcitie::class;
+    Addcuisine::class;
 
     return view('admin.addcuisines.create');
     

@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Addcitie extends Model
+class Addcity extends Model
 {
     protected $guarded = [];
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Addrestaurent;
-use App\Models\Addcitie;
+use App\Models\Addcity;
 use App\Models\Addcuisine;
 use App\Models\Addzone;
 
@@ -24,73 +24,98 @@ class AddrestaurentController extends Controller
 
         return view('admin.addrestaurents.index',compact('addrestaurents'));
 }
-    public function create()
+    public function create(Request $request)
     {
-        $addcities=Addcitie::all();
+        $addcities=Addcity::all();
         $addzones=Addzone::all();
         $addcuisines=Addcuisine::all();
-        Addrestaurent::class;
 
+        Addrestaurent::class;
         return view('admin.addrestaurents.create')->with(compact('addcities','addzones','addcuisines'));
         
     }
     
     public function store(Request $request)
     {
-        $validatedData =$request->validate([
-            'addcitie_id' => ['required', 'exists:addcities,id'],
+        $inputs = request()->validate([
+            'addcity_id' => ['required', 'exists:addcities,id'],
             'addzone_id' => ['required', 'exists:addzones,id'],
             'addcuisine_id' => ['required', 'exists:addcuisines,id'],
 
             'name'=>['required'],
             'about'=>['required'],
             'adress' => 'required',
-            'citie'=>['required'],
-            'zone'=>['required'],
+            
             'location'=>['required'],
             'logo' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'banner'=>['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'minvalue'=>['required'],
             'cost'=>['required'],
             'time'=>['required'],
-            'cuisine' => 'required',
             'is_open'=>['sometimes', 'in:1,0'], 
             'pickup'=>['sometimes', 'in:1,0'], 
             'open'=>['sometimes', 'in:1,0'],    
              'billing' => ['required'],
             'mobile'=>['required']
-        ]);
-         Addrestaurent::create([
-                'name'=> (request('name')),
-                'about'=> (request('about')),
-                'adress'=> (request('adress')),
-                'citie'=> (request('citie')),
-                'zone'=> (request('zone')),
-                'location' => (request('location')),
-                'logo'=> (request('logo')),
-                'banner'=> (request('banner')),
-                'minvalue'=> (request('minvalue')),
-                'cost'=> (request('cost')),
-                'time'=> (request('time')),
-                'cuisine' => (request('cuisine')),
-                'is_open'=> (request('is_open')),
-                'pickup'=> (request('pickup')),
-                'open'=> (request('open')),
-                'billing'=> (request('billing')),
-                'mobile'=> (request('mobile')),
-            ]);
-            if ($request->has('logo')) {
-                $validatedData['logo'] = $request->file('logo')->store('images', 'public');
-            }
             
-            if ($request->has('banner')) {
-                $validatedData['banner'] = $request->file('banner')->move('images', 'public');
-            }
-        session()->flash('restaurent-created-message', 'Restaurent  was created ');
+        ]);
+        if(request('logo')){
+            $inputs['logo'] = request('logo')->store('images', 'public');
+        }
+        if(request('banner')){
+            $inputs['banner'] = request('banner')->store('images', 'public');
+        }
+       
+        Addrestaurent:: create($inputs);
+
+        session()->flash('restaurent-created-message', 'Restaurent with title was created ');
 
         return redirect()->route('addrestaurent.index');
 
     }
+    public function show(Addrestaurent $addrestaurent)
+    {   
+        return view('admin.addrestaurents.show', ['addrestaurent'=> $addrestaurent]);
+    }
+    
+    public function edit(Addrestaurent $addrestaurent)
+    {  
+       
+        return view('admin.addrestaurents.edit', ['addrestaurent'=> $addrestaurent]);
+    }
+    public function update(Addrestaurent $addrestaurent)
+    {  
+        $inputs = request()->validate([
+           
 
+            'name'=>['required'],
+            'about'=>['required'],
+            'adress' => 'required',
+            
+            'location'=>['required'],
+            
+            'minvalue'=>['required'],
+            'cost'=>['required'],
+            'time'=>['required'],
+             
+             'billing' => ['required'],
+            'mobile'=>['required']
+            
+        ]);
+        $addrestaurent->name = request('name');
+        $addrestaurent->about = request('about');
+        $addrestaurent->adress=request('adress');
+        $addrestaurent->location = request('location');
+        $addrestaurent->minvalue = request('minvalue');
+        $addrestaurent->cost = request('cost');
+        $addrestaurent->time = request('time');
+        $addrestaurent->billing = request('billing');
+        $addrestaurent->mobile=request('mobile');
+
+        $addrestaurent->save();
+        session()->flash('restaurent-updated-message', 'Restaurent was updated ');
+        return redirect()->route('addrestaurent.index');
+
+    }
     
 }
