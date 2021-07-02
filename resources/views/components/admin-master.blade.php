@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -351,6 +352,11 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.js')}}"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 
 @yield('scripts')
 

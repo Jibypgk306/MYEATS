@@ -22,8 +22,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -79,8 +82,12 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
         </main>
     </div>
+    <script type="text/javascript">
+$(document).ready(function() {
+$('.js-example-basic-multiple').select2();
+ });
+</script>
 </body>
 </html>

@@ -134,7 +134,55 @@
                                        @error('mobile')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
-                        </div>  
+ </div>  
+ <div class="form-group row">
+<label for="addcity_id">{{ __('City') }}</label>
+<div class="col-sm-6">
+<select class="form-control" name="addcity_id">
+@foreach($addcities as $addcity)
+<option value="{{ $addcity->id }}" {{ ($addcity->id == $addrestaurent->addcity_id) ? 'selected' : '' }}>{{ $addcity->name }}</option>
+@endforeach
+</select>
+@error('city')
+<span class="invalid-feedback" role="alert">
+<strong>{{ $message }}</strong>
+</span>
+@enderror
+</div>
+</div>
+
+ <div class="form-group row">
+<label for="addzone_id" >{{ __('zone') }}</label>
+<div class="col-sm-6">
+<select class="form-control" name="addzone_id">
+@foreach($addzones as $addzone)
+<option value="{{ $addzone->id }}" {{ ($addzone->id == $addrestaurent->addzone_id) ? 'selected' : '' }}>{{ $addzone->name }}</option>
+@endforeach
+</select>
+@error('zone')
+<span class="invalid-feedback" role="alert">
+<strong>{{ $message }}</strong>
+</span>
+@enderror
+</div>
+</div>
+
+
+ <div class="form-group">
+                    <strong>Banner</strong>
+                    <input type="file" name="banner" class="form-control" placeholder="image">
+                    <img src="{{Storage::url($addrestaurent->banner) }}" width="300px">
+                </div>
+                               
+ <div class="form-group">
+            <label for="status">Status</label>                      
+<select name="status" class="form-control" id="status" aria-describedby="">
+<option value="" disabled>Choose an Option</option>
+<option {{ old('status',$addrestaurent->status) == 'active'? 'selected':'' }} value="Active">Active</option>
+<option {{ old('status',$addrestaurent->status) == 'blocked'? 'selected':'' }} value="blocked">Blocked</option>
+</select>
+</div>
+                                               
 <a class="btn " href="{{route('addrestaurent.index')}}" role="button"><b>Cancel</a>
 <button type="submit" class="btn btn-primary"><b>Update Restaurent<b></button>
 </form>

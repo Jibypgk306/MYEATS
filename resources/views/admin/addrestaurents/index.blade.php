@@ -42,7 +42,7 @@ Create Restaurent</a></button>
                             <th>Allow Pickup</th>
                             <th>24x7 Open</th>
                             <th>Status<th>
-
+                            
                         </tr>
                         </thead>
                         
@@ -61,9 +61,20 @@ Create Restaurent</a></button>
                                 <td>{{$addrestaurent->cost}}</td>
 
                                 <td>{{$addrestaurent->time}}</td>
-                                <td>{{$addrestaurent->is_open}}</td>
-                                <td>{{$addrestaurent->pickup}}</td>
-                                <td>{{$addrestaurent->open}}</td>
+                                <td>@if($addrestaurent->is_open==1)
+                    <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
+                    @else
+                    <img src="{{ asset('images/wrong.png') }}" alt="tag" width="25" height="25">
+                    @endif</td>
+                    <td>@if($addrestaurent->pickup==1)
+                    <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
+                    @else
+                    <img src="{{ asset('images/wrong.png') }}" alt="tag" width="25" height="25">
+                    @endif</td><td>@if($addrestaurent->open==1)
+                    <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
+                    @else
+                    <img src="{{ asset('images/wrong.png') }}" alt="tag" width="25" height="25">
+                    @endif</td> 
                                 <td>{{$addrestaurent->status}}</td>
 
                                 <td><a href="{{route('addrestaurent.edit', $addrestaurent->id)}}">EDIT</a></td>
@@ -93,7 +104,7 @@ Create Restaurent</a></button>
 
             <!-- Page level custom scripts -->
 
-           <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
+           <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
     @endsection
 
 </x-admin-master>

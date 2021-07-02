@@ -70,9 +70,7 @@
                        placeholder="Enter password">
             </div>
             <div class="form-group">
-            <label for="block_user">Block User</label>
-               
-                       
+            <label for="block_user">Block User</label>                      
 <select name="block_user" class="form-control" id="block_user" aria-describedby="">
 <option value="" disabled>Choose an Option</option>
 <option {{ old('block_user',$adduser->block_user) == 'active'? 'selected':'' }} value="active">Active</option>

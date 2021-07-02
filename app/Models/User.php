@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
     public function addcuisine()
     {
-        return $this->belongsTo(Addcitie::class);
+        return $this->belongsTo(Addcuisine::class);
     }
     public function addzone()
     {

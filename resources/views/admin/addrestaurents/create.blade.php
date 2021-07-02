@@ -1,6 +1,26 @@
 <x-admin-master>
     @section('content')
+    @extends('layouts.app')
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCtpnS2gv30FdPqAlGHcVHCutDnldDKV2s"></script>
 
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                alert(mesg);
+            });
+        });
+    </script>
+    
         <h1>Create Restaurent:</h1>
 
                 <form method="post" action="{{route('addrestaurent.store')}}" enctype="multipart/form-data">
@@ -20,24 +40,24 @@
                         </div>
                         <div class="form-group">
                             <label for="about">About</label>
-                                <input type="text"
+                                <textarea
                                        name="about"
                                        class="form-control @error('about') is-invalid @enderror"
                                        id="about"
                                        aria-describedby=""
-                                       placeholder="about">
+                                       placeholder="about"></textarea>
                                        @error('about')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
                         </div>
                         <div class="form-group">
                             <label for="adress">Adress</label>
-                                <input type="text"
+                            <textarea
                                        name="adress"
                                        class="form-control @error('adress') is-invalid @enderror"
                                        id="adress"
                                        aria-describedby=""
-                                       placeholder="Enter adress">
+                                       placeholder="Enter adress"></textarea>
                                        @error('adress')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -83,7 +103,7 @@
                                 <input type="text"
                                        name="location"
                                        class="form-control @error('location') is-invalid @enderror"
-                                       id="location"
+                                       id="txtPlaces" style="width: 250px"
                                        aria-describedby=""
                                        placeholder="Enter location">
                                        @error('location')
@@ -146,11 +166,11 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror       
         </div>
+        
         <div class="form-group row">
     <label for="addcuisine_id" class="">{{ __('Cuisine') }}</label>
-                                       
-     <div class="col-sm-6">
-    <select class="form-control" name="addcuisine_id">
+    <div class="col-sm-6">
+    <select class="form-control"  name="addcuisine_id">
      <option selected disabled>{{ __('Select') }}</option>
     @foreach($addcuisines as $addcuisine)
     <option value="{{ $addcuisine->id }}">{{ $addcuisine->name }}</option>
@@ -163,6 +183,25 @@
      @enderror
      </div>
      </div>
+
+
+     <!-- <div class="form-group row">
+                                <label for="addcuisine">{{ __('Cuisines') }}</label>
+                                <div class="col-sm-6">
+                                    <select multiple="multiple" class="js-example-basic-multiple select2 form-control @error('addcuisine_id') is-invalid @enderror" name="addcuisine_id[]">
+                                        @foreach($addcuisines as $addcuisine)
+                                        <option @if (old("addcuisine_id")){{ (in_array($addcuisine->id, old("addcuisine_id")) ? "selected":"") }}@endif value='{{ $addcuisine->id }}'>{{ $addcuisine->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('addcuisine_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>The cuisine field is required.</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div> -->
+
+
 
 <div class="form-group ">
  <div class="form-check  @error('is_open') is-invalid @enderror">

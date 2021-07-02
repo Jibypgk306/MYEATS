@@ -68,7 +68,7 @@ class AddrestaurentController extends Controller
        
         Addrestaurent:: create($inputs);
 
-        session()->flash('restaurent-created-message', 'Restaurent with title was created ');
+        session()->flash('restaurent-created-message', 'Restaurent  was created ');
 
         return redirect()->route('addrestaurent.index');
 
@@ -80,14 +80,17 @@ class AddrestaurentController extends Controller
     
     public function edit(Addrestaurent $addrestaurent)
     {  
-       
-        return view('admin.addrestaurents.edit', ['addrestaurent'=> $addrestaurent]);
+        $addcities=Addcity::all();
+        $addzones=Addzone::all();
+        $addcuisines=Addcuisine::all();
+        return view('admin.addrestaurents.edit', ['addrestaurent'=> $addrestaurent])->with(compact('addcities','addzones','addcuisines'));
     }
-    public function update(Addrestaurent $addrestaurent)
+    public function update(Addrestaurent $addrestaurent,Request $request)
     {  
         $inputs = request()->validate([
            
-
+            'addcity_id' => ['required', 'exists:addcities,id'],
+            'addzone_id' => ['required', 'exists:addzones,id'],
             'name'=>['required'],
             'about'=>['required'],
             'adress' => 'required',
@@ -97,11 +100,12 @@ class AddrestaurentController extends Controller
             'minvalue'=>['required'],
             'cost'=>['required'],
             'time'=>['required'],
-             
              'billing' => ['required'],
-            'mobile'=>['required']
-            
+            'mobile'=>['required'],
+            'status'=>['required']    
         ]);
+        $addrestaurent->addcity_id = request('addcity_id');
+        $addrestaurent->addzone_id = request('addzone_id');
         $addrestaurent->name = request('name');
         $addrestaurent->about = request('about');
         $addrestaurent->adress=request('adress');
@@ -111,6 +115,8 @@ class AddrestaurentController extends Controller
         $addrestaurent->time = request('time');
         $addrestaurent->billing = request('billing');
         $addrestaurent->mobile=request('mobile');
+        $addrestaurent->status = request('status');
+        
 
         $addrestaurent->save();
         session()->flash('restaurent-updated-message', 'Restaurent was updated ');

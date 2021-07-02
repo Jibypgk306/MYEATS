@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Addcitie;
+use App\Models\Addcity;
 use App\Models\Addrestaurent;
 use Illuminate\Http\Request;
 
@@ -9,7 +9,7 @@ class AddcitieController extends Controller
 {
     public function index(Request $request)
     {    
-        $addcities = Addcitie::when(
+        $addcities = Addcity::when(
             $request->input('name'),
             function ($query) use ($request)
             {
@@ -37,7 +37,7 @@ public function create()
             'name'=>['required'],
             
         ]);
-            Addcitie::create([
+            Addcity::create([
                 'name'=> (request('name')),
                 
             ]);
@@ -47,16 +47,16 @@ public function create()
 
     }
 
-    public function edit(Addcitie $addcitie)
+    public function edit(Addcity $addcitie)
     {  
         return view('admin.addcities.edit', ['addcitie'=> $addcitie]);
     }
-    public function show(Addcitie $addcitie)
+    public function show(Addcity $addcitie)
     {   
         return view('admin.addcities.show', ['addcitie'=> $addcitie]);
     }
     
-    public function update(Addcitie $addcitie)
+    public function update(Addcity $addcitie)
     {  
          Request()->validate([
             'name'=>['required'],
