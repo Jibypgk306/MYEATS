@@ -85,4 +85,5 @@ class AdduserController extends Controller
         return redirect()->route('adduser.index');
 
     }
+    
 }

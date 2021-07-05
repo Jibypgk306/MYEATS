@@ -9,6 +9,8 @@ Auth::routes();
     
     Route::middleware('auth')->group(function()
     {
+        Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
         Route::get('/home', 'App\Http\Controllers\AdminsController@index')->name('admin.index');
 
     Route::get('/admin', 'App\Http\Controllers\AdminsController@index')->name('admin.index');

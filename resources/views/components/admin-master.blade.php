@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FOODDAY</title>
+    <title>FOOD DAY</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3"><b>FOODAY</b> <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3"><b>FOODDAY</b> <sup>2</sup></div>
         </a>
 
         <!-- Divider -->

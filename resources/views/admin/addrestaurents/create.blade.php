@@ -215,7 +215,7 @@
 
 <div class="form-group">
                             <label for="billing">Billing Email</label>
-                                <input type="text"
+                                <input type="email"
                                        name="billing"
                                        class="form-control @error('billing') is-invalid @enderror"
                                        id="billing"

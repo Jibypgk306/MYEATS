@@ -52,7 +52,7 @@ Create Restaurent</a></button>
 
                             <tr>
                                 <td>{{$addrestaurent->name}}</td>
-                                <td>{{$addrestaurent->addcity->name}}</td>
+                                <td><a href="{{route('addcitie.show', $addrestaurent->addcity->id)}}">{{$addrestaurent->addcity->name}}</a></td>
                                                    
                                 <td><img src="{{Storage::url($addrestaurent->logo) }}" width="75" height="75" alt="image" /></td>
                                 <td><img src="{{Storage::url($addrestaurent->banner) }}" width="75" height="75" alt="image" /></td>
@@ -64,16 +64,16 @@ Create Restaurent</a></button>
                                 <td>@if($addrestaurent->is_open==1)
                     <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
                     @else
-                    <img src="{{ asset('images/wrong.png') }}" alt="tag" width="25" height="25">
+                    <img src="{{ asset('images/wrong.jpg') }}" alt="tag" width="25" height="25">
                     @endif</td>
                     <td>@if($addrestaurent->pickup==1)
                     <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
                     @else
-                    <img src="{{ asset('images/wrong.png') }}" alt="tag" width="25" height="25">
+                    <img src="{{ asset('images/wrong.jpg') }}" alt="tag" width="25" height="25">
                     @endif</td><td>@if($addrestaurent->open==1)
                     <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
                     @else
-                    <img src="{{ asset('images/wrong.png') }}" alt="tag" width="25" height="25">
+                    <img src="{{ asset('images/wrong.jpg') }}" alt="tag" width="25" height="25">
                     @endif</td> 
                                 <td>{{$addrestaurent->status}}</td>
 

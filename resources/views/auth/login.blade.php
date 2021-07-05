@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <h1><center>FOODAY</center></h1>
+        <h1><center>FOOD DAY</center></h1>
             <div class="card">
                 <div class="card-header"><h2><center>Welcome Back !</center></h2>
 </div>

@@ -7,9 +7,8 @@
             @csrf
             <h5 class="mt-4">Name: <center> {{$addrestaurent->name}}</center></h5>
             <h5>Address:<center> {{$addrestaurent->adress}}</center></h5>
-            <h5 class="mt-4">City: <center>{{$addrestaurent->addcity->name}}</center></h5>
-            <h5 class="mt-4">Zone: <center>{{$addrestaurent->addzone->name}}</center></h5>
-
+            <h5 class="mt-4">City: <center><a href="{{route('addcitie.show', $addrestaurent->addcity->id)}}">{{$addrestaurent->addcity->name}}</a></center></h5>
+            <h5 class="mt-4">Zone: <center><a href="{{route('addzone.show', $addrestaurent->addzone->id)}}">{{$addrestaurent->addzone->name}}</a></center></h5>
             <h5>Logo:<center><img src="{{Storage::url($addrestaurent->logo) }}" width="350" height="250" alt="image" /></center></h5>
             <center><a href="/images/logo.jpg" download>Download</center></a>
             <h5>Banner:<center><img src="{{Storage::url($addrestaurent->banner) }}" width="350" height="250" alt="image" /></center></h5>

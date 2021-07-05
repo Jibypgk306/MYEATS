@@ -87,9 +87,6 @@ class AddrestaurentController extends Controller
     }
     public function update(Addrestaurent $addrestaurent,Request $request)
  { 
-
- 
-
        $inputs = request()->validate([
  
       'addcity_id' => ['required', 'exists:addcities,id'],
@@ -105,6 +102,7 @@ class AddrestaurentController extends Controller
       'time'=>['required'],
       'billing' => ['required'],
       'mobile'=>['required'],
+      'is_open'=>['sometimes', 'in:1,0'],
       'status'=>['required'] 
       ]);
       if ($request->has('logo')) {
@@ -113,6 +111,27 @@ class AddrestaurentController extends Controller
         if ($request->has('banner')) {
             $inputs['banner'] = $request->file('banner')->store('images', 'public');
         }
+
+        if ($request->has('is_open')) {
+            $inputs['is_open'] = 1;
+        } else {
+            $inputs['is_open'] = 0;
+        }
+
+        if ($request->has('pickup')) {
+            $inputs['pickup'] = 1;
+        } else {
+            $inputs['pickup'] = 0;
+        }
+ 
+
+        if ($request->has('open')) {
+            $inputs['open'] = 1;
+        } else {
+            $inputs['open'] = 0;
+        }
+ 
+ 
         $addrestaurent->update($inputs);
         session()->flash('restaurent-updated-message', 'Restaurent was updated ');
         return redirect()->route('addrestaurent.index');

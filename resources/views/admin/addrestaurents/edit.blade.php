@@ -110,7 +110,7 @@
 
                                 <div class="form-group">
                             <label for="billing">Billing Email</label>
-                                <input type="text"
+                                <input type="email"
                                        name="billing"
                                        class="form-control @error('billing') is-invalid @enderror"
                                        id="billing"
@@ -176,10 +176,55 @@
                     <strong>Banner</strong>
                     <input type="file" name="banner" class="form-control" placeholder="image">
                     <img src="{{Storage::url($addrestaurent->banner) }}" width="300px">
-                </div>
+                </div>  
 
-                
-               
+                <div class="form-group row">
+                                    <label for="select" class="col-sm-2 col-form-label">Is Open</label>
+                                    <div class="col-sm-4">
+                                        <div class="form-group ">
+                                            <div class="form-check  @error('is_open') is-invalid @enderror">
+                                                <input type="checkbox" id="is_open" name="is_open"  {{ old('is_open',$addrestaurent->is_open) == '1' ? 'checked' : '' }} value="1">
+                                            </div>
+                                            @error('is_open')
+                                            <span class="error invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label for="select" class="col-sm-2 col-form-label">Allow Pickup</label>
+                                    <div class="col-sm-4">
+                                        <div class="form-group ">
+                                            <div class="form-check  @error('pickup') is-invalid @enderror">
+                                                <input type="checkbox" id="pickup" name="pickup"  {{ old('pickup',$addrestaurent->pickup) == '1' ? 'checked' : '' }} value="1">
+                                            </div>
+                                            @error('pickup')
+                                            <span class="error invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label for="select" class="col-sm-2 col-form-label">24x7 Open</label>
+                                    <div class="col-sm-4">
+                                        <div class="form-group ">
+                                            <div class="form-check  @error('open') is-invalid @enderror">
+                                                <input type="checkbox" id="open" name="open"  {{ old('open',$addrestaurent->open) == '1' ? 'checked' : '' }} value="1">
+                                            </div>
+                                            @error('open')
+                                            <span class="error invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+
  <div class="form-group">
             <label for="status">Status</label>                      
 <select name="status" class="form-control" id="status" aria-describedby="">
