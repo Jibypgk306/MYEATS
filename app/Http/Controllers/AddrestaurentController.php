@@ -86,42 +86,36 @@ class AddrestaurentController extends Controller
         return view('admin.addrestaurents.edit', ['addrestaurent'=> $addrestaurent])->with(compact('addcities','addzones','addcuisines'));
     }
     public function update(Addrestaurent $addrestaurent,Request $request)
-    {  
-        $inputs = request()->validate([
-           
-            'addcity_id' => ['required', 'exists:addcities,id'],
-            'addzone_id' => ['required', 'exists:addzones,id'],
-            'name'=>['required'],
-            'about'=>['required'],
-            'adress' => 'required',
-            
-            'location'=>['required'],
-            
-            'minvalue'=>['required'],
-            'cost'=>['required'],
-            'time'=>['required'],
-             'billing' => ['required'],
-            'mobile'=>['required'],
-            'status'=>['required']    
-        ]);
-        $addrestaurent->addcity_id = request('addcity_id');
-        $addrestaurent->addzone_id = request('addzone_id');
-        $addrestaurent->name = request('name');
-        $addrestaurent->about = request('about');
-        $addrestaurent->adress=request('adress');
-        $addrestaurent->location = request('location');
-        $addrestaurent->minvalue = request('minvalue');
-        $addrestaurent->cost = request('cost');
-        $addrestaurent->time = request('time');
-        $addrestaurent->billing = request('billing');
-        $addrestaurent->mobile=request('mobile');
-        $addrestaurent->status = request('status');
-        
+ { 
 
-        $addrestaurent->save();
+ 
+
+       $inputs = request()->validate([
+ 
+      'addcity_id' => ['required', 'exists:addcities,id'],
+      'addzone_id' => ['required', 'exists:addzones,id'],
+      'name'=>['required'],
+      'about'=>['required'],
+      'adress' => 'required',
+      'logo' => ['image', 'mimes:jpeg,png,jpg', 'max:2048'],
+      'banner'=>[ 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+      'location'=>['required'],
+      'minvalue'=>['required'],
+      'cost'=>['required'],
+      'time'=>['required'],
+      'billing' => ['required'],
+      'mobile'=>['required'],
+      'status'=>['required'] 
+      ]);
+      if ($request->has('logo')) {
+        $inputs['logo'] = $request->file('logo')->store('images', 'public');
+    }
+        if ($request->has('banner')) {
+            $inputs['banner'] = $request->file('banner')->store('images', 'public');
+        }
+        $addrestaurent->update($inputs);
         session()->flash('restaurent-updated-message', 'Restaurent was updated ');
         return redirect()->route('addrestaurent.index');
-
-    }
+      }
     
 }

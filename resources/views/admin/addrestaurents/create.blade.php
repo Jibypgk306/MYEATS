@@ -1,26 +1,5 @@
 <x-admin-master>
     @section('content')
-    @extends('layouts.app')
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCtpnS2gv30FdPqAlGHcVHCutDnldDKV2s"></script>
-
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
-    <script type="text/javascript">
-        google.maps.event.addDomListener(window, 'load', function () {
-            var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
-            google.maps.event.addListener(places, 'place_changed', function () {
-                var place = places.getPlace();
-                var address = place.formatted_address;
-                var latitude = place.geometry.location.lat();
-                var longitude = place.geometry.location.lng();
-                var mesg = "Address: " + address;
-                mesg += "\nLatitude: " + latitude;
-                mesg += "\nLongitude: " + longitude;
-                alert(mesg);
-            });
-        });
-    </script>
-    
         <h1>Create Restaurent:</h1>
 
                 <form method="post" action="{{route('addrestaurent.store')}}" enctype="multipart/form-data">
@@ -167,16 +146,17 @@
         @enderror       
         </div>
         
+        
         <div class="form-group row">
-    <label for="addcuisine_id" class="">{{ __('Cuisine') }}</label>
-    <div class="col-sm-6">
-    <select class="form-control"  name="addcuisine_id">
+    <label for="addzone_id" class="">{{ __('Cuisine') }}</label>                                  
+     <div class="col-sm-6">
+    <select class="form-control" name="addcuisine_id">
      <option selected disabled>{{ __('Select') }}</option>
     @foreach($addcuisines as $addcuisine)
-    <option value="{{ $addcuisine->id }}">{{ $addcuisine->name }}</option>
+    <option value="{{ $addzone->id }}">{{ $addcuisine->name }}</option>
     @endforeach
      </select>
-    @error('cuisine')
+    @error('name')
     <span class="invalid-feedback" role="alert">
     <strong>{{ $message }}</strong>
     </span>
@@ -262,5 +242,26 @@
                         <button  class="btn btn-primary">Create and add another</button>
 
                 </form>
+                <html xmlns="http://www.w3.org/1999/xhtml">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCtpnS2gv30FdPqAlGHcVHCutDnldDKV2s"></script>
+
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                alert(mesg);
+            });
+        });
+    </script>
+               
     @endsection
+    
 </x-admin-master>

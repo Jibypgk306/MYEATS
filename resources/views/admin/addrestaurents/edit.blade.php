@@ -166,14 +166,20 @@
 @enderror
 </div>
 </div>
-
+<div class="form-group">
+                    <strong>Logo</strong>
+                    <input type="file" name="logo" class="form-control" placeholder="image">
+                    <img src="{{Storage::url($addrestaurent->logo) }}" width="300px">
+                </div>
 
  <div class="form-group">
                     <strong>Banner</strong>
                     <input type="file" name="banner" class="form-control" placeholder="image">
                     <img src="{{Storage::url($addrestaurent->banner) }}" width="300px">
                 </div>
-                               
+
+                
+               
  <div class="form-group">
             <label for="status">Status</label>                      
 <select name="status" class="form-control" id="status" aria-describedby="">
