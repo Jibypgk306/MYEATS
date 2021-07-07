@@ -91,6 +91,7 @@ class AddrestaurentController extends Controller
  
       'addcity_id' => ['required', 'exists:addcities,id'],
       'addzone_id' => ['required', 'exists:addzones,id'],
+
       'name'=>['required'],
       'about'=>['required'],
       'adress' => 'required',
