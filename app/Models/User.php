@@ -44,13 +44,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Adduser::class);
     }
-    public function addcity()
+    public function city()
     {
-        return $this->belongsTo(Addcity::class);
+        return $this->belongsTo(City::class);
     }
     public function addcuisine()
     {
-        return $this->belongsTo(Addcuisine::class);
+        return $this->belongsTo(Cuisine::class);
     }
     public function addzone()
     {

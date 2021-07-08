@@ -100,7 +100,7 @@
                 <span>Cities</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{{route('addcuisine.index')}}">
+        <a class="nav-link" href="{{route('cuisine.index')}}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Cuisines</span></a>
         </li>
@@ -110,7 +110,7 @@
                 <span>Zones</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('addrestaurent.index')}}">
+            <a class="nav-link" href="{{route('restaurent.index')}}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Restaurents</span></a>
         </li>

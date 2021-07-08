@@ -23,7 +23,7 @@ class AddzoneController extends Controller
 public function create()
 {
 
-    Addcitie::class;
+    City::class;
 
     return view('admin.addzones.create');
     

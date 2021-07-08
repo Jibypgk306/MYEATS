@@ -3,7 +3,7 @@
 
         <h1>Create Cuisine:</h1>
 
-                <form method="post" action="{{route('addcuisine.store')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('cuisine.store')}}" enctype="multipart/form-data">
 
                         @csrf
                         <div class="form-group">
@@ -21,7 +21,7 @@
                         </div>
                         
                       
-                        <a  class="btn " href="{{route('addcuisine.index')}}" role="button"><b>Cancel</a>
+                        <a  class="btn " href="{{route('cuisine.index')}}" role="button"><b>Cancel</a>
                         <button type="submit" class="btn btn-primary">Create Cuisine</b></button>
 
                         <button  class="btn btn-primary">Create and add another</button>

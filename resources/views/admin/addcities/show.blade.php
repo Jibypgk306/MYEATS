@@ -1,12 +1,12 @@
 <x-admin-master>
     @section('content')
 
-        <h2>City Details:{{$addcitie->name}} </h2>
+        <h2>City Details:{{$citie->name}} </h2>
 
-        <form method="post" action="{{route('addcitie.show', $addcitie->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('addcitie.show', $citie->id)}}" enctype="multipart/form-data">
             @csrf
-            <h5 class="mt-4">ID:  {{$addcitie->id}}</h5>
-            <h5 class="mt-4">Name:  {{$addcitie->name}}</h5>
+            <h5 class="mt-4">ID:  {{$citie->id}}</h5>
+            <h5 class="mt-4">Name:  {{$citie->name}}</h5>
             
     @endsection
 </x-admin-master>

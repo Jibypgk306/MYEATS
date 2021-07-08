@@ -20,7 +20,7 @@
         @endif
 <div>
 <button type="submit" class="btn btn-success">
-<a href="{{route('addrestaurent.create')}}" >
+<a href="{{route('restaurent.create')}}" >
 Create Restaurent</a></button>
 
 </div>
@@ -48,37 +48,36 @@ Create Restaurent</a></button>
                         
                         <tbody>
 
-                        @foreach($addrestaurents as $addrestaurent)
+                        @foreach($restaurents as $restaurent)
 
                             <tr>
-                                <td>{{$addrestaurent->name}}</td>
-                                <td><a href="{{route('addcitie.show', $addrestaurent->addcity->id)}}">{{$addrestaurent->addcity->name}}</a></td>
-                                                   
-                                <td><img src="{{Storage::url($addrestaurent->logo) }}" width="75" height="75" alt="image" /></td>
-                                <td><img src="{{Storage::url($addrestaurent->banner) }}" width="75" height="75" alt="image" /></td>
+                                <td>{{$restaurent->name}}</td>
+                                <td><a href="{{route('addcitie.show', $restaurent->city->id)}}">{{$restaurent->city->name}}
+                                <td><img src="{{Storage::url($restaurent->logo) }}" width="75" height="75" alt="image" /></td>
+                                <td><img src="{{Storage::url($restaurent->banner) }}" width="75" height="75" alt="image" /></td>
 
-                                <td>{{$addrestaurent->minvalue}}</td>
-                                <td>{{$addrestaurent->cost}}</td>
+                                <td>{{$restaurent->minvalue}}</td>
+                                <td>{{$restaurent->cost}}</td>
 
-                                <td>{{$addrestaurent->time}}</td>
-                                <td>@if($addrestaurent->is_open==1)
+                                <td>{{$restaurent->time}}</td>
+                                <td>@if($restaurent->is_open==1)
                     <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
                     @else
                     <img src="{{ asset('images/wrong.jpg') }}" alt="tag" width="25" height="25">
                     @endif</td>
-                    <td>@if($addrestaurent->pickup==1)
+                    <td>@if($restaurent->pickup==1)
                     <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
                     @else
                     <img src="{{ asset('images/wrong.jpg') }}" alt="tag" width="25" height="25">
-                    @endif</td><td>@if($addrestaurent->open==1)
+                    @endif</td><td>@if($restaurent->open==1)
                     <img src="{{ asset('images/tick.jpg') }}" alt="tag" width="25" height="25">
                     @else
                     <img src="{{ asset('images/wrong.jpg') }}" alt="tag" width="25" height="25">
                     @endif</td> 
-                                <td>{{$addrestaurent->status}}</td>
+                                <td>{{$restaurent->status}}</td>
 
-                                <td><a href="{{route('addrestaurent.edit', $addrestaurent->id)}}">EDIT</a></td>
-                                <td><a href="{{route('addrestaurent.show', $addrestaurent->id)}}">VIEW</a></td>
+                                <td><a href="{{route('restaurent.edit', $restaurent->id)}}">EDIT</a></td>
+                                <td><a href="{{route('restaurent.show', $restaurent->id)}}">VIEW</a></td>
                             </tr>
                          @endforeach
 
@@ -90,7 +89,7 @@ Create Restaurent</a></button>
         
         <div class="d-flex">
             <div class="mx-auto">
-            {{$addrestaurents->links('pagination::bootstrap-4')}}
+            {{$restaurents->links('pagination::bootstrap-4')}}
             </div>
         </div>
 

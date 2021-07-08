@@ -1,9 +1,9 @@
 <x-admin-master>
     @section('content')
 
-        <h2>Update City : {{$addcitie->name}}</h2>
+        <h2>Update City : {{$citie->name}}</h2>
 
-        <form method="post" action="{{route('addcitie.update', $addcitie->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('addcitie.update', $citie->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="form-group">
@@ -14,7 +14,7 @@
                        id="name"
                        aria-describedby=""
                        placeholder="Enter name"
-                       value="{{$addcitie->name}}">
+                       value="{{$citie->name}}">
                        @error('name')
     <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

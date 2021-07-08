@@ -1,9 +1,17 @@
 <x-admin-master>
     @section('content')
-
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyA6gEfQ--K1SIz2Zj8CRzWHUiK68bSEDXY"></script>
+    <!-- Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        
+    
         <h2>Update :</h2>
 
-        <form method="post" action="{{route('addrestaurent.update', $addrestaurent->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('restaurent.update', $restaurent->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="form-group">
@@ -15,7 +23,7 @@
                                        id="name"
                                        aria-describedby=""
                                        placeholder="Enter name"
-                                       value="{{$addrestaurent->name}}">
+                                       value="{{$restaurent->name}}">
                                        
                                        @error('name')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -31,7 +39,7 @@
                                        id="about"
                                        aria-describedby=""
                                        placeholder="about"
-                                       value="{{$addrestaurent->about}}">
+                                       value="{{$restaurent->about}}">
                                        @error('about')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
@@ -44,7 +52,7 @@
                                        id="adress"
                                        aria-describedby=""
                                        placeholder="Enter adress"
-                                       value="{{$addrestaurent->adress}}">
+                                       value="{{$restaurent->adress}}">
                                        @error('adress')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -58,7 +66,7 @@
                                        id="location"
                                        aria-describedby=""
                                        placeholder="Enter location"
-                                       value="{{$addrestaurent->location}}">
+                                       value="{{$restaurent->location}}">
                                        @error('location')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -72,7 +80,7 @@
                                        id="minvalue"
                                        aria-describedby=""
                                        placeholder="Enter minmum order value"
-                                       value="{{$addrestaurent->minvalue}}">
+                                       value="{{$restaurent->minvalue}}">
                                        @error('minvalue')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror       
@@ -86,7 +94,7 @@
                                        id="cost"
                                        aria-describedby=""
                                        placeholder="Enter cost"
-                                       value="{{$addrestaurent->cost}}">
+                                       value="{{$restaurent->cost}}">
                                        @error('cost')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror       
@@ -100,7 +108,7 @@
                                        id="time"
                                        aria-describedby=""
                                        placeholder="Default prepartion time"
-                                       value="{{$addrestaurent->time}}">
+                                       value="{{$restaurent->time}}">
                                        @error('time')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror       
@@ -116,7 +124,7 @@
                                        id="billing"
                                        aria-describedby=""
                                        placeholder="Billing email"
-                                       value="{{$addrestaurent->billing}}">
+                                       value="{{$restaurent->billing}}">
                                        @error('billing')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -130,17 +138,18 @@
                                        id="mobile"
                                        aria-describedby=""
                                        placeholder="Enter Number"
-                                       value="{{$addrestaurent->mobile}}">
+                                       value="{{$restaurent->mobile}}">
                                        @error('mobile')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
  </div>  
+ 
  <div class="form-group row">
-<label for="addcity_id">{{ __('City') }}</label>
+<label for="city_id">{{ __('City') }}</label>
 <div class="col-sm-6">
-<select class="form-control" name="addcity_id">
-@foreach($addcities as $addcity)
-<option value="{{ $addcity->id }}" {{ ($addcity->id == $addrestaurent->addcity_id) ? 'selected' : '' }}>{{ $addcity->name }}</option>
+<select class="form-control" name="city_id">
+@foreach($cities as $city)
+<option value="{{ $city->id }}" {{ ($city->id == $restaurent->city_id) ? 'selected' : '' }}>{{ $city->name }}</option>
 @endforeach
 </select>
 @error('city')
@@ -156,7 +165,7 @@
 <div class="col-sm-6">
 <select class="form-control" name="addzone_id">
 @foreach($addzones as $addzone)
-<option value="{{ $addzone->id }}" {{ ($addzone->id == $addrestaurent->addzone_id) ? 'selected' : '' }}>{{ $addzone->name }}</option>
+<option value="{{ $addzone->id }}" {{ ($addzone->id == $restaurent->addzone_id) ? 'selected' : '' }}>{{ $addzone->name }}</option>
 @endforeach
 </select>
 @error('zone')
@@ -169,13 +178,13 @@
 <div class="form-group">
                     <strong>Logo</strong>
                     <input type="file" name="logo" class="form-control" placeholder="image">
-                    <img src="{{Storage::url($addrestaurent->logo) }}" width="300px">
+                    <img src="{{Storage::url($restaurent->logo) }}" width="300px">
                 </div>
 
  <div class="form-group">
                     <strong>Banner</strong>
                     <input type="file" name="banner" class="form-control" placeholder="image">
-                    <img src="{{Storage::url($addrestaurent->banner) }}" width="300px">
+                    <img src="{{Storage::url($restaurent->banner) }}" width="300px">
                 </div>  
 
                 <div class="form-group row">
@@ -183,7 +192,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group ">
                                             <div class="form-check  @error('is_open') is-invalid @enderror">
-                                                <input type="checkbox" id="is_open" name="is_open"  {{ old('is_open',$addrestaurent->is_open) == '1' ? 'checked' : '' }} value="1">
+                                                <input type="checkbox" id="is_open" name="is_open"  {{ old('is_open',$restaurent->is_open) == '1' ? 'checked' : '' }} value="1">
                                             </div>
                                             @error('is_open')
                                             <span class="error invalid-feedback">{{ $message }}</span>
@@ -199,7 +208,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group ">
                                             <div class="form-check  @error('pickup') is-invalid @enderror">
-                                                <input type="checkbox" id="pickup" name="pickup"  {{ old('pickup',$addrestaurent->pickup) == '1' ? 'checked' : '' }} value="1">
+                                                <input type="checkbox" id="pickup" name="pickup"  {{ old('pickup',$restaurent->pickup) == '1' ? 'checked' : '' }} value="1">
                                             </div>
                                             @error('pickup')
                                             <span class="error invalid-feedback">{{ $message }}</span>
@@ -215,7 +224,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group ">
                                             <div class="form-check  @error('open') is-invalid @enderror">
-                                                <input type="checkbox" id="open" name="open"  {{ old('open',$addrestaurent->open) == '1' ? 'checked' : '' }} value="1">
+                                                <input type="checkbox" id="open" name="open"  {{ old('open',$restaurent->open) == '1' ? 'checked' : '' }} value="1">
                                             </div>
                                             @error('open')
                                             <span class="error invalid-feedback">{{ $message }}</span>
@@ -229,13 +238,24 @@
             <label for="status">Status</label>                      
 <select name="status" class="form-control" id="status" aria-describedby="">
 <option value="" disabled>Choose an Option</option>
-<option {{ old('status',$addrestaurent->status) == 'active'? 'selected':'' }} value="Active">Active</option>
-<option {{ old('status',$addrestaurent->status) == 'blocked'? 'selected':'' }} value="blocked">Blocked</option>
+<option {{ old('status',$restaurent->status) == 'active'? 'selected':'' }} value="Active">Active</option>
+<option {{ old('status',$restaurent->status) == 'blocked'? 'selected':'' }} value="blocked">Blocked</option>
 </select>
 </div>
                                                
-<a class="btn " href="{{route('addrestaurent.index')}}" role="button"><b>Cancel</a>
+<a class="btn " href="{{route('restaurent.index')}}" role="button"><b>Cancel</a>
 <button type="submit" class="btn btn-primary"><b>Update Restaurent<b></button>
 </form>
+</body>
+ <!-- jQuery -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+      $("#multiple").select2({
+          placeholder: "Select cuisines",
+          allowClear: true
+      });
+    </script>
 @endsection
 </x-admin-master>

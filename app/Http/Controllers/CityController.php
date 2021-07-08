@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Addcity;
-use App\Models\Addrestaurent;
+use App\Models\City;
 use Illuminate\Http\Request;
 
-class AddcitieController extends Controller
+class CityController extends Controller
 {
     public function index(Request $request)
     {    
-        $addcities = Addcity::when(
+        $cities = City::when(
             $request->input('name'),
             function ($query) use ($request)
             {
@@ -19,12 +18,12 @@ class AddcitieController extends Controller
 
         $request->flash();
 
-        return view('admin.addcities.index',compact('addcities'));
+        return view('admin.addcities.index',compact('cities'));
 }
 public function create()
 {
 
-    Addcitie::class;
+    City::class;
 
     return view('admin.addcities.create');
     
@@ -37,7 +36,7 @@ public function create()
             'name'=>['required'],
             
         ]);
-            Addcity::create([
+            City::create([
                 'name'=> (request('name')),
                 
             ]);
@@ -47,25 +46,24 @@ public function create()
 
     }
 
-    public function edit(Addcity $addcitie)
+    public function edit(City $citie)
     {  
-        return view('admin.addcities.edit', ['addcitie'=> $addcitie]);
+        return view('admin.addcities.edit', ['citie'=> $citie]);
     }
-    public function show(Addcity $addcitie)
+    public function show(City $citie)
     {   
-        return view('admin.addcities.show', ['addcitie'=> $addcitie]);
+        return view('admin.addcities.show', ['citie'=> $citie]);
     }
     
-    public function update(Addcity $addcitie)
+    public function update(City $citie)
     {  
          Request()->validate([
             'name'=>['required'],
             
         ]);  
-        $addcitie->name = request('name');
+        $citie->name = request('name');
         
-
-        $addcitie->save();
+        $citie->save();
         session()->flash('citie-updated-message', 'Citie was updated ');
         return redirect()->route('addcitie.index');
 

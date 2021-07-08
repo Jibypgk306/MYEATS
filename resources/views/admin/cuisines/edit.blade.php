@@ -1,9 +1,9 @@
 <x-admin-master>
     @section('content')
 
-        <h2>Update Cuisine : {{$addcuisine->name}}</h2>
+        <h2>Update Cuisine : {{$cuisine->name}}</h2>
 
-        <form method="post" action="{{route('addcuisine.update', $addcuisine->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('cuisine.update', $cuisine->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="form-group">
@@ -14,14 +14,14 @@
                        id="name"
                        aria-describedby=""
                        placeholder="Enter name"
-                       value="{{$addcuisine->name}}">
+                       value="{{$cuisine->name}}">
                        @error('name')
     <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
             </div>
             
             
-<a class="btn " href="{{route('addcuisine.index')}}" role="button"><b>Cancel</a>
+<a class="btn " href="{{route('cuisine.index')}}" role="button"><b>Cancel</a>
 <button type="submit" class="btn btn-primary"><b>Update Cuisine<b></button>
 </form>
 @endsection

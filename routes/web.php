@@ -24,25 +24,30 @@ Auth::routes();
     Route::get('/admin/addusers/{adduser}/show', 'App\Http\Controllers\AdduserController@show')->name('adduser.show');
 
     
-    Route::get('/admin/addcities', 'App\Http\Controllers\AddcitieController@index')->name('addcitie.index');
-    Route::get('/admin/addcities/create', 'App\Http\Controllers\AddcitieController@create')->name('addcitie.create');
-    Route::post('/admin/addcities', 'App\Http\Controllers\AddcitieController@store')->name('addcitie.store');
-    Route::delete('/admin/addcities/{addcitie}/destroy', 'App\Http\Controllers\AddcitieController@destroy')->name('addcitie.destroy');
-    Route::patch('/admin/addcities/{addcitie}/update', 'App\Http\Controllers\AddcitieController@update')->name('addcitie.update');
-    Route::get('/admin/addcities/{addcitie}/edit', 'App\Http\Controllers\AddcitieController@edit')->name('addcitie.edit');
-    Route::get('/admin/addcities/{addcitie}/show', 'App\Http\Controllers\AddcitieController@show')->name('addcitie.show');
+    
+
+    Route::get('/admin/cuisines', 'App\Http\Controllers\CuisineController@index')->name('cuisine.index');
+    Route::get('/admin/cuisines/create', 'App\Http\Controllers\CuisineController@create')->name('cuisine.create');
+    Route::post('/admin/cuisines', 'App\Http\Controllers\CuisineController@store')->name('cuisine.store');
+    Route::delete('/admin/cuisines/{cuisine}/destroy', 'App\Http\Controllers\CuisineController@destroy')->name('cuisine.destroy');
+    Route::patch('/admin/cuisines/{cuisine}/update', 'App\Http\Controllers\CuisineController@update')->name('cuisine.update');
+    Route::get('/admin/cuisines/{cuisine}/edit', 'App\Http\Controllers\CuisineController@edit')->name('cuisine.edit');
+    Route::get('/admin/cuisines/{cuisine}/show', 'App\Http\Controllers\CuisineController@show')->name('cuisine.show');
+
+
+    Route::get('/admin/addcities', 'App\Http\Controllers\CityController@index')->name('addcitie.index');
+    Route::get('/admin/addcities/create', 'App\Http\Controllers\CityController@create')->name('addcitie.create');
+    Route::post('/admin/addcities', 'App\Http\Controllers\CityController@store')->name('addcitie.store');
+    Route::delete('/admin/addcities/{citie}/destroy', 'App\Http\Controllers\CityController@destroy')->name('addcitie.destroy');
+    Route::patch('/admin/addcities/{citie}/update', 'App\Http\Controllers\CityController@update')->name('addcitie.update');
+    Route::get('/admin/addcities/{citie}/edit', 'App\Http\Controllers\CityController@edit')->name('addcitie.edit');
+    Route::get('/admin/addcities/{citie}/show', 'App\Http\Controllers\CityController@show')->name('addcitie.show');
 
 
 
-    Route::get('/admin/addcuisines', 'App\Http\Controllers\AddcuisineController@index')->name('addcuisine.index');
-    Route::get('/admin/addcuisines/create', 'App\Http\Controllers\AddcuisineController@create')->name('addcuisine.create');
-    Route::post('/admin/addcuisines', 'App\Http\Controllers\AddcuisineController@store')->name('addcuisine.store');
-    Route::delete('/admin/addcuisines/{addcuisine}/destroy', 'App\Http\Controllers\AddcuisineController@destroy')->name('addcuisine.destroy');
-    Route::patch('/admin/addcuisines/{addcuisine}/update', 'App\Http\Controllers\AddcuisineController@update')->name('addcuisine.update');
-    Route::get('/admin/addcuisines/{addcuisine}/edit', 'App\Http\Controllers\AddcuisineController@edit')->name('addcuisine.edit');
-    Route::get('/admin/addcuisines/{addcuisine}/show', 'App\Http\Controllers\AddcuisineController@show')->name('addcuisine.show');
 
 
+    
 
     Route::get('/admin/addzones', 'App\Http\Controllers\AddzoneController@index')->name('addzone.index');
     Route::get('/admin/addzones/create', 'App\Http\Controllers\AddzoneController@create')->name('addzone.create');
@@ -55,12 +60,12 @@ Auth::routes();
 
 
 
-    Route::get('/admin/addrestaurents', 'App\Http\Controllers\AddrestaurentController@index')->name('addrestaurent.index');
-    Route::get('/admin/addrestaurents/create', 'App\Http\Controllers\AddrestaurentController@create')->name('addrestaurent.create');
-    Route::post('/admin/addrestaurents', 'App\Http\Controllers\AddrestaurentController@store')->name('addrestaurent.store');
-    Route::patch('/admin/addrestaurents/{addrestaurent}/update', 'App\Http\Controllers\AddrestaurentController@update')->name('addrestaurent.update');
-    Route::get('/admin/addrestaurents/{addrestaurent}/edit', 'App\Http\Controllers\AddrestaurentController@edit')->name('addrestaurent.edit');
-    Route::get('/admin/addrestaurents/{addrestaurent}/show', 'App\Http\Controllers\AddrestaurentController@show')->name('addrestaurent.show');
+    Route::get('/admin/restaurents', 'App\Http\Controllers\RestaurentController@index')->name('restaurent.index');
+    Route::get('/admin/restaurents/create', 'App\Http\Controllers\RestaurentController@create')->name('restaurent.create');
+    Route::post('/admin/restaurents', 'App\Http\Controllers\RestaurentController@store')->name('restaurent.store');
+    Route::patch('/admin/restaurents/{restaurent}/update', 'App\Http\Controllers\RestaurentController@update')->name('restaurent.update');
+    Route::get('/admin/restaurents/{restaurent}/edit', 'App\Http\Controllers\RestaurentController@edit')->name('restaurent.edit');
+    Route::get('/admin/restaurents/{restaurent}/show', 'App\Http\Controllers\RestaurentController@show')->name('restaurent.show');
 
 }); 
 

@@ -17,7 +17,7 @@
         @endif
 <div>
 <button type="submit" class="btn btn-success">
-<a href="{{route('addcuisine.create')}}" >
+<a href="{{route('cuisine.create')}}" >
 Create Cuisine</a></button>
 
 </div>
@@ -39,13 +39,13 @@ Create Cuisine</a></button>
                         
                         <tbody>
 
-                        @foreach($addcuisines as $addcuisine)
+                        @foreach($cuisines as $cuisine)
 
                             <tr>
                                 <td><img src="{{ asset('images/logo.jpg') }}" alt="tag" width="25" height="25"></td>
-                                <td>{{$addcuisine->name}}</td>
-                                <td><a href="{{route('addcuisine.edit', $addcuisine->id)}}">EDIT</a></td>
-                                <td><a href="{{route('addcuisine.show', $addcuisine->id)}}">VIEW</a></td>
+                                <td>{{$cuisine->name}}</td>
+                                <td><a href="{{route('cuisine.edit', $cuisine->id)}}">EDIT</a></td>
+                                <td><a href="{{route('cuisine.show', $cuisine->id)}}">VIEW</a></td>
                             </tr>
                          @endforeach
 
@@ -57,7 +57,7 @@ Create Cuisine</a></button>
         
         <div class="d-flex">
             <div class="mx-auto">
-            {{$addcuisines->links('pagination::bootstrap-4')}}
+            {{$cuisines->links('pagination::bootstrap-4')}}
             </div>
         </div>
 

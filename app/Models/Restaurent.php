@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Addrestaurent extends Model
+class Restaurent extends Model
 {
     protected $guarded = [];
 
@@ -13,13 +13,13 @@ class Addrestaurent extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function addcity()
+    public function city()
     {
-        return $this->belongsTo(Addcity::class);
+        return $this->belongsTo(City::class);
     }
-    public function addcuisine()
+    public function cuisine()
     {
-        return $this->belongsTo(Addcuisine::class);
+        return $this->belongsToMany(Cuisine::class,'cuisine_restaurent','restaurent_id','cuisine_id');
     }
     public function addzone()
     {

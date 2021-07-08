@@ -39,13 +39,13 @@ Create City</a></button>
                         
                         <tbody>
 
-                        @foreach($addcities as $addcitie)
+                        @foreach($cities as $citie)
 
                             <tr>
                                 <td><img src="{{ asset('images/logo.jpg') }}" alt="tag" width="25" height="25"></td>
-                                <td>{{$addcitie->name}}</td>
-                                <td><a href="{{route('addcitie.edit', $addcitie->id)}}">EDIT</a></td>
-                                <td><a href="{{route('addcitie.show', $addcitie->id)}}">VIEW</a></td>
+                                <td>{{$citie->name}}</td>
+                                <td><a href="{{route('addcitie.edit', $citie->id)}}">EDIT</a></td>
+                                <td><a href="{{route('addcitie.show', $citie->id)}}">VIEW</a></td>
                             </tr>
                          @endforeach
 
@@ -57,7 +57,7 @@ Create City</a></button>
         
         <div class="d-flex">
             <div class="mx-auto">
-            {{$addcities->links('pagination::bootstrap-4')}}
+            {{$cities->links('pagination::bootstrap-4')}}
             </div>
         </div>
 
@@ -71,27 +71,7 @@ Create City</a></button>
 
             <!-- Page level custom scripts -->
 
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-{{--            <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
+               <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
     @endsection
 
 </x-admin-master>
