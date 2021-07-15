@@ -82,14 +82,20 @@ class RestaurentController extends Controller
     }
     
     public function edit(Restaurent $restaurent)
-    {  
+    {   
         $addzones=Addzone::all();
         $cities=City::all();
-
-        return view('admin.restaurents.edit', ['restaurent'=> $restaurent])->with(compact('addzones','cities'));
+        $cuisines=Cuisine::all();
+        $restaurentCuisine = [];
+             
+        foreach($restaurent->cuisine as $cusRes)
+        {
+            $restaurentCuisine[] = $cusRes->id;
+        }    
+        return view('admin.restaurents.edit', ['restaurent'=> $restaurent])->with(compact('addzones','cities','restaurentCuisine','cuisines'));
     }
     public function update(Restaurent $restaurent,Request $request)
- { 
+    { 
        $inputs = request()->validate([
  
         'addzone_id' => ['required', 'exists:addzones,id'],
@@ -136,7 +142,10 @@ class RestaurentController extends Controller
         }
  
         $restaurent->update($inputs);
-        
+    //     if ($request->has('cuisine_id')) 
+    //         {
+    // $restaurent->cuisine()->attach($request->input('cuisine_id'));
+    //         } 
         session()->flash('restaurent-updated-message', 'Restaurent was updated ');
         return redirect()->route('restaurent.index');
       }

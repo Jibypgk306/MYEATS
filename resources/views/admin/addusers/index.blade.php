@@ -79,27 +79,7 @@ Create User</a></button>
 
             <!-- Page level custom scripts -->
 
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-
-    /**
-    *  __Construct method
-    */
-    public function __construct()
-    {
-    }
-{{--            <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
+        <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
     @endsection
 
 </x-admin-master>

@@ -67,6 +67,22 @@ Auth::routes();
     Route::get('/admin/restaurents/{restaurent}/edit', 'App\Http\Controllers\RestaurentController@edit')->name('restaurent.edit');
     Route::get('/admin/restaurents/{restaurent}/show', 'App\Http\Controllers\RestaurentController@show')->name('restaurent.show');
 
+
+    Route::get('/admin/orders', 'App\Http\Controllers\OrderController@index')->name('order.index');
+    Route::get('/admin/orders/create', 'App\Http\Controllers\OrderController@create')->name('order.create');
+    Route::post('/admin/orders', 'App\Http\Controllers\OrderController@store')->name('order.store');
+    Route::get('/admin/orders/{order}/show', 'App\Http\Controllers\OrderController@show')->name('order.show');
+    Route::patch('/admin/orders/{order}/update', 'App\Http\Controllers\OrderController@update')->name('order.update');
+    Route::get('/admin/orders/{order}/edit', 'App\Http\Controllers\OrderController@edit')->name('order.edit');
+    Route::get('/admin/orders/search', 'App\Http\Controllers\SearchController@search')->name('order.search');
+
+    
+    Route::get('/admin/dicounts', 'App\Http\Controllers\DiscountController@index')->name('discount.index');
+    Route::get('/admin/discounts/create', 'App\Http\Controllers\DiscountController@create')->name('discount.create');
+    Route::post('/admin/discounts', 'App\Http\Controllers\DiscountController@store')->name('discount.store');
+    Route::get('/admin/discounts/{discount}/show', 'App\Http\Controllers\DiscountController@show')->name('discount.show');
+    Route::patch('/admin/discounts/{discount}/update', 'App\Http\Controllers\DiscountController@update')->name('discount.update');
+    Route::get('/admin/discounts/{discount}/edit', 'App\Http\Controllers\DiscountController@edit')->name('discount.edit');
 }); 
 
 

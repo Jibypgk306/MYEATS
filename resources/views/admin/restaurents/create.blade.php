@@ -36,7 +36,6 @@
         </div>
         <div class="form-group row">
             <label for="city_id" class="">{{ __('City') }}</label>
-
             <div class="col-sm-6">
                 <select class="form-control" name="city_id">
                     <option selected disabled>{{ __('Select') }}</option>

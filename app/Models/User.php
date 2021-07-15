@@ -56,8 +56,20 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Addzone::class);
     }
-    public function addrestaurent()
+    public function restaurent()
     {
-        return $this->belongsTo(Addrestaurent::class);
+        return $this->belongsTo(Restaurent::class);
     }
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    } 
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    } 
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
+    } 
 }

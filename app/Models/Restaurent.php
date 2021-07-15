@@ -25,9 +25,13 @@ class Restaurent extends Model
     {
         return $this->belongsTo(Addzone::class);
     }
+
     public function getPostImageAttribute($value)
     {
         return asset($value);
     } 
-    
+    public function discount()
+    {
+        return $this->belongsToMany(Discount::class,'discount_restaurent','discount_id','restaurent_id');
+    }
 }

@@ -232,7 +232,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+<label for="cuisines" >{{ __('Cuisines') }}</label>
+<div class="col-sm-6">
+<select id="multiple" class="js-states form-control" name="cuisine_id[]" multiple>
+@foreach($cuisines as $cuisine)
+@if (in_array($cuisine->id, $restaurentCuisine))
+<option value="{{ $cuisine->id }}" selected="">{{ $cuisine->name}}</option>
+@else
+<option @if (old("cuisine_id")){{ (in_array($cuisine->id, old("cuisine_id")) ? "selected":"") }}@endif value="{{ $cuisine->id }}">{{ $cuisine->name}}</option>
+@endif
+@endforeach
+</select>
 
+</div>
+</div>
 
  <div class="form-group">
             <label for="status">Status</label>                      
